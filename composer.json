@@ -1,0 +1,20 @@
+{
+    "name": "HossamAhmed/laraCRUD",
+    "description": "laravel Model and CRUD Generator From the Database Structure Edit",
+    "type": "laravel",
+    "version":"1",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Hossam ahmed",
+            "email": "hosam.ahmed2000@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+     "autoload": {
+        "psr-4": {
+            "HossamAhmed\\LaraCRUD\\": "src/"
+        }
+    },
+    "require": {}
+}
