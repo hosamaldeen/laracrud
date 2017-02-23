@@ -1,10 +1,10 @@
 <?php
 
-namespace HossamAhmed\LaraCRUD\Http\Controllers;
+namespace Hosamaldeen\LaraCRUD\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use HossamAhmed\LaraCRUD\Http\Controllers\ModelGenerator ;
+use Hosamaldeen\LaraCRUD\Http\Controllers\ModelGenerator ;
 
 class LaraCrudController extends Controller {
    

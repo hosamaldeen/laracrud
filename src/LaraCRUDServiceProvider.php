@@ -1,6 +1,6 @@
 <?php
 
-namespace HossamAhmed\LaraCRUD;
+namespace Hosamaldeen\LaraCRUD;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,7 +14,7 @@ class LaraCRUDServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__ . '/assets' => public_path('vendor/HossamAhmed/laraCRUD'),
+            __DIR__ . '/assets' => public_path('vendor/Hosamaldeen/laraCRUD'),
                 ], 'public');
         $this->publishes([
             __DIR__ . '/config' => config_path(''),

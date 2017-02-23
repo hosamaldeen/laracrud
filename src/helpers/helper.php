@@ -1,6 +1,6 @@
 <?php
 
-namespace HossamAhmed\LaraCRUD\helpers;
+namespace Hosamaldeen\LaraCRUD\helpers;
 
 class helper {
 

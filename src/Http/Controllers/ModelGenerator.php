@@ -1,6 +1,6 @@
 <?php
 
-namespace HossamAhmed\LaraCRUD\Http\Controllers;
+namespace Hosamaldeen\LaraCRUD\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
