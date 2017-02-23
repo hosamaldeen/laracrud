@@ -13,7 +13,7 @@
     "minimum-stability": "dev",
      "autoload": {
         "psr-4": {
-            "Hosamaldeen\\laracrud\\": "src/"
+            "Hosamaldeen\\LaraCRUD\\": "src/"
         }
     },
     "require": {}
