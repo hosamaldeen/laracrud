@@ -8,7 +8,6 @@ class {{$className}} extends Base\{{$className}}
     function __construct(array $attributes = array()) {
         parent::__construct($attributes);
         $this->rules();
-        dd($this->rules);
     }
     
     function rules()
