@@ -36,8 +36,8 @@ class LaraCRUDServiceProvider extends ServiceProvider
          * loading routes and sometimes add middelware group
          */
         $router=$this->app->router;
-        if(config('CRUD.middelware_group')!=''):
-            $router->group([ 'middleware' => [config('CRUD.middelware_group')]], function($router) {
+        if(config('laraCRUD.middelware_group')!=''):
+            $router->group([ 'middleware' => [config('laraCRUD.middelware_group')]], function($router) {
 			require __DIR__ . '/Http/routes.php';
 		});
         else:    
