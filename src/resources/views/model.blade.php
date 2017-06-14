@@ -1,7 +1,7 @@
 @extends('laraCRUD::layout')
 @section('content')
 <?php
-use Hossamahmed\LaraCRUD\helpers\helper ;
+use Hosamaldeen\LaraCRUD\helpers\helper ;
 ?>
 <div class="container" >
     
