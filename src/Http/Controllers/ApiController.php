@@ -5,6 +5,7 @@ namespace Hosamaldeen\LaraCRUD\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Hosamaldeen\LaraCRUD\Http\Controllers\ModelGenerator ;
+use Illuminate\Support\Facades\Input;
 
 class ApiController extends Controller {
    
@@ -18,6 +19,7 @@ class ApiController extends Controller {
 		{
 			unset($data[$key]['baseClass']);
 		}
+		return $data ;
 		echo json_encode($data);
     } 
 	
@@ -38,10 +40,17 @@ class ApiController extends Controller {
 	
 	function generate() 
     {
-		$table = input::get('table');
-		//$file
-		echo $table ;
-		die ;
+		if(!Input::has('table') ||  !Input::has('file'))
+		{
+			$data['status'] = false ;
+			$data['error'] = 'table and file input are required' ;
+			echo json_encode($data);
+			die ;
+		}
+		$table = Input::get('table');
+		$file = Input::get('file');
+		
+		$modelGenerator = new ModelGenerator ;
 		$modelGenerator->generateModel($table ,$file) ;
 		$data['status'] = true ;
 		echo json_encode($data);
