@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class BaseModel extends Model
 {
+	public $errors ;
     public function validate($data=NULL) {
         
         if($data==NULL)

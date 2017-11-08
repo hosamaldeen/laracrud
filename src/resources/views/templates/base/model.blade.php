@@ -7,6 +7,8 @@ namespace App\Models\Base;
 abstract class {{$className}} extends BaseModel
 {
     protected $table = '{{$tableName}}';
+	protected $guarded = ['id'];
+	//timestamp
 	
     //Rules
     

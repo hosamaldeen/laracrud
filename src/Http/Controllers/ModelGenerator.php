@@ -92,11 +92,13 @@ class ModelGenerator extends Controller {
             //dd($modelFile);
             if(isset($modelFile['isBaseModel']) &&  $modelFile['isBaseModel'] === true )
             {
+                $timeStamp = $this->getTableTimeStamp($table);
                 $relations = $this->getTableRelations($table);
                 $default = $this->getTableDefault($table);
                 $rules = $this->getTableRules($table);
                 $comment = $this->getTableComment($table);
                 
+                $temp = str_replace('//timestamp' , $timeStamp , $temp);
                 $temp = str_replace('//Rules' , $rules , $temp);
                 $temp = str_replace('//Default' , $default , $temp);
                 $temp = str_replace('//Comments' , $comment , $temp);
@@ -166,7 +168,7 @@ class ModelGenerator extends Controller {
         $columns = \DB::select($query);
         $hasDefault = FALSE ;
         
-        $return = '//=========Rules===============
+        $return = '//=========Default Values===============
     public $attributes=[';
         foreach($columns as $column)
         {
@@ -283,6 +285,27 @@ class ModelGenerator extends Controller {
         return $return ;        
     }
     
+	private function getTableTimeStamp($table){
+		$return = '';
+		$query = "SHOW COLUMNS FROM ".$table." ";
+        $columns = \DB::select($query);
+		$columns = array_map(function($v){
+			return $v->Field ;
+		} , $columns);
+		
+		if(!in_array('created_at' , $columns) || !in_array('updated_at' , $columns) )
+		{
+			$return .= 'public $timestamps = false;
+	' ;
+		}
+		
+		if(in_array('deleted_at' , $columns))
+		{
+			$return .= 'use \Illuminate\Database\Eloquent\SoftDeletes;' ;
+		}
+		
+		return $return ;
+	}
     
     /* Helpers */
     private function getModelFromTable($table)
