@@ -209,10 +209,15 @@ class ModelGenerator extends Controller {
             if(!isset($matches[1]))continue ;
             if(isset($matches[3]) && $matches[1]=='') $matches[1] = $matches[3] ;
             
+            if(in_array($column->Field, ['created_at' , 'updated_at' ]) )
+				continue ;
             
             // Get The Rules 
             if($column->Null == 'NO') 
                 $rules[] = 'required' ;
+			else
+                $rules[] = 'nullable' ;
+            
             
             if($matches[1] == 'tinyint' && @$matches[2]=='1') 
                 $rules[] = 'boolean' ;
@@ -223,8 +228,8 @@ class ModelGenerator extends Controller {
             if($matches[1] == 'int' ) 
                 $rules[] = 'integer' ;
             
-            if($matches[1] == 'varchar' && @$matches[2]>0) 
-                $rules[] = 'size:'.$matches[2] ;
+            //if($matches[1] == 'varchar' && @$matches[2]>0) 
+              //  $rules[] = 'size:'.$matches[2] ;
             
             if($column->Key == 'UNI') 
                 $rules[] = 'unique:'.$table ;
